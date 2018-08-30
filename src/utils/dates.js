@@ -26,7 +26,7 @@ let dates = {
   },
 
   lastVisibleDay(date, localizer) {
-    let endOfMonth = dates.endOf(date, 'month')
+    let endOfMonth = dates.add(dates.endOf(date, 'month'), 1, 'week')
 
     return dates.endOf(endOfMonth, 'week', localizer.startOfWeek())
   },
