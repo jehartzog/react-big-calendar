@@ -95,6 +95,8 @@ export function sortEvents(evtA, evtB, accessors) {
     startSort || // sort by start Day first
     Math.max(durB, 1) - Math.max(durA, 1) || // events spanning multiple days go first
     !!accessors.allDay(evtB) - !!accessors.allDay(evtA) || // then allDay single day events
-    +accessors.start(evtA) - +accessors.start(evtB)
+    evtA.eventType.localeCompare(evtB.eventType) || // Custom sort by eventType
+    +accessors.start(evtA) - +accessors.start(evtB) || // then sort by start time
+    evtA.title.localeCompare(evtB.title) // Custom sort by title
   ) // then sort by start time
 }
